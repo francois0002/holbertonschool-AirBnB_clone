@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-import models from BaseModel
+"""Module of the class User"""
+
+from models.base_model import BaseModel
+
 
 class User(BaseModel):
-	email = charField()
-	password = charField()
-	first_name = charField()
-	last_name = charfield()
-
+    """Creation of the class User an inherited class of BaseModel"""
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""

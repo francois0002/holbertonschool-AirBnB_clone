@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-import models from BaseModel
+"""Module of the class State"""
 
-class state(BaseModel):
-	name = ""
+from models.base_model import BaseModel
+
+
+class State(BaseModel):
+    """Creation of the class State an inherited class of BaseModel"""
+    name = ""

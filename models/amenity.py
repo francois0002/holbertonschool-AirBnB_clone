@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-import models from BaseModel
+"""Module of the class Amenity"""
 
-class amenity(BaseModel):
-	name = ""
+from models.base_model import BaseModel
+
+
+class Amenity(BaseModel):
+    """Creation of the class Amenity an inherited class of BaseModel"""
+    name = ""
