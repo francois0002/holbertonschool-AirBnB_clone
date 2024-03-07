@@ -87,15 +87,15 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        token = arg.split()
-        try:
-            """create a new instance of a class based on the argument arg"""
-            new_instance = eval(token[0])()
-            """save in a Json File"""
-            new_instance.save()
-            print(new_instance.id)
-        except NameError:
+
+        arguments_list = arg.split()
+        if arguments_list[0] not in classes:
             print("** class doesn't exist **")
+            return
+
+        new_instance = eval(arguments_list[0])()
+        new_instance.save()
+        print(new_instance.id)
 
     def do_show(self, arg):
         """Show the string representation of an instance"""
