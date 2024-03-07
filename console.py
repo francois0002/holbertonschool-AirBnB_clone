@@ -66,23 +66,21 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints all string representation of all instances"""
         file_storage_objs = storage.all()
-        list_all_instances = []
         if len(arg) == 0:
-            for instance in file_storage_objs.values():
-                list_all_instances.append(str(instance))
-                print(list_all_instances)
+            print([str(instance) for instance in file_storage_objs.values()])
+
         else:
             argument_list = arg.split()
             class_name = argument_list[0]
-
             if class_name not in classes:
                 print("** class doesn't exist **")
                 return
+
             list_all_instances = []
             for instance in file_storage_objs.values():
                 if instance.__class__.__name__ == class_name:
                     list_all_instances.append(str(instance))
-                    print(list_all_instances)
+            print(list_all_instances)
 
     def do_create(self, arg):
         """Create a new instance of BaseModel"""
