@@ -65,8 +65,24 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string representation of all instances"""
-        for arg in arg.split():
-            print(arg)
+        file_storage_objs = storage.all()
+        list_all_instances = []
+        if len(arg) == 0:
+            for instance in file_storage_objs.values():
+                list_all_instances.append(str(instance))
+                print(list_all_instances)
+        else:
+            argument_list = arg.split()
+            class_name = argument_list[0]
+
+            if class_name not in classes:
+                print("** class doesn't exist **")
+                return
+            list_all_instances = []
+            for instance in file_storage_objs.values():
+                if instance.__class__.__name__ == class_name:
+                    list_all_instances.append(str(instance))
+                    print(list_all_instances)
 
     def do_create(self, arg):
         """Create a new instance of BaseModel"""
@@ -90,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
             return
         """divise arg in keyword list"""
         args = arg.split()
-        if args[0] not in ["BaseModel"]:
+        if args[0] not in classes:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
